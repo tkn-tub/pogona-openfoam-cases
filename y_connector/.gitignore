@@ -1,0 +1,6 @@
+*.blend[1-9]
+**/polyMesh/
+**/extendedFeatureEdgeMesh/
+*.eMesh
+**/dynamicCode/
+log.*
