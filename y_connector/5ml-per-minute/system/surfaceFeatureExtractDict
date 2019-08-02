@@ -36,35 +36,28 @@ FoamFile
 //    writeObj yes;
 //}
 
-background_inlet_patch.stl
+backgroundInletPatch.stl
 {
     extractionMethod extractFromSurface;
     extractFromSurfaceCoeffs
     {includedAngle 150;}
     writeObj yes;
 }
-particle_inlet_patch.stl
+particleInletPatch.stl
 {
     extractionMethod extractFromSurface;
     extractFromSurfaceCoeffs
     {includedAngle 150;}
     writeObj yes;
 }
-outlet_patch.stl
+outletPatch.stl
 {
     extractionMethod extractFromSurface;
     extractFromSurfaceCoeffs
     {includedAngle 150;}
     writeObj yes;
 }
-y_connector_patch.stl
-{
-    extractionMethod extractFromSurface;
-    extractFromSurfaceCoeffs
-    {includedAngle 150;}
-    writeObj yes;
-}
-propagation_tube_patch.stl
+yConnectorPatch.stl
 {
     extractionMethod extractFromSurface;
     extractFromSurfaceCoeffs

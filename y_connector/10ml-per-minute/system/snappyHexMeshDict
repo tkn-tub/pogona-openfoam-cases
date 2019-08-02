@@ -33,37 +33,31 @@ addLayers       true; // add viscous layers? (cp. YouTube tutorial: 47:00)
 // - to 'snap' the mesh boundary to the surface
 geometry
 {
-    combined_mesh.stl
+    combined.stl
     {
         type triSurfaceMesh;
         name combinedMesh;
     }
 
-    background_inlet_patch.stl
+    backgroundInletPatch.stl
     {
         type triSurfaceMesh;
         name backgroundInletPatch;
     }
 
-    particle_inlet_patch.stl
+    particleInletPatch.stl
     {
         type triSurfaceMesh;
         name particleInletPatch;
     }
 
-    y_connector_patch.stl
+    yConnectorPatch.stl
     {
         type triSurfaceMesh;
         name yConnectorPatch;
     }
 
-    propagation_tube_patch.stl
-    {
-        type triSurfaceMesh;
-        name propagationTubePatch;
-    }
-
-    outlet_patch.stl
+    outletPatch.stl
     {
         type triSurfaceMesh;
         name outletPatch;
@@ -128,13 +122,12 @@ castellatedMeshControls
         // If you have split your mesh across several .stl files,
         // you can specify different levels of refinement here!
         {
-            file "background_inlet_patch.eMesh"; // This file should be in const/triSurface after running surfaceFeatureExtract
+            file "backgroundInletPatch.eMesh"; // This file should be in const/triSurface after running surfaceFeatureExtract
             level 0; // in YouTube tutorial: 3; TODO: is higher more refined or less?
         }
-        {file "outlet_patch.eMesh"; level 0;} // was 3
-        {file "particle_inlet_patch.eMesh"; level 0;} // was 3
-        {file "propagation_tube_patch.eMesh"; level 0;} // was 3
-        {file "y_connector_patch.eMesh"; level 0;} // was 4
+        {file "outletPatch.eMesh"; level 0;} // was 3
+        {file "particleInletPatch.eMesh"; level 0;} // was 3
+        {file "yConnectorPatch.eMesh"; level 0;} // was 4
         // excluding combined_mesh.eMesh (won't even be generated with surfaceFeatureExtract)
     );
 
@@ -156,7 +149,6 @@ castellatedMeshControls
         particleInletPatch {level (0 0);}
         outletPatch {level (0 0);}
         yConnectorPatch {level (0 0);} // was (4 4)
-        propagationTubePatch {level (0 0);}
 
         //yConnector
         //{
@@ -278,8 +270,9 @@ addLayersControls
         //    nSurfaceLayers 1;
         //}
         yConnectorPatch {nSurfaceLayers 3;}
-        particleInletPatch {nSurfaceLayers 3;}
-        propagationTubePatch {nSurfaceLayers 3;}
+        particleInletPatch {nSurfaceLayers 0;}
+        outletPatch {nSurfaceLayers 0;}
+        backgroundInletPatch {nSurfaceLayers 0;}
     }
 
     // Expansion factor for layer mesh

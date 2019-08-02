@@ -11,6 +11,11 @@ cd ${0%/*} || exit 1  # Run from this directory
 # (i.e., not for mesh generation) and is committed to git.
 # --> No need to move/copy contents of 0/ to 0.org/.
 
+rm -f constant/triSurface/combined.stl
+# Rename objects inside STL files:
+../rename-stl-object.sh constant/triSurface/*.stl
+cat constant/triSurface/*.stl > constant/triSurface/combined.stl
+
 runApplication -s mesh blockMesh
 runApplication -s mesh surfaceFeatureExtract
 runApplication -s mesh decomposePar
