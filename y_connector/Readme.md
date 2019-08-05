@@ -13,12 +13,13 @@ Many of the following steps are now automated in the `ConstructMesh` and `RunSim
     - Note: You may or may not wish to split your volume into different parts (e.g., tube, inlet, outlet; inlet and outlet would probably just be a single polygon or circle). In the coming steps, simply save these to different .stl files, then follow the step below to rename the stored stl `solid`, then merge all files into one using `cat tube.stl inlet.stl outlet.stl > merged.stl`.
     - In the Scene properties, optionally set the Unit Scale to 0.001 so you can comfortably work with millimeter accuracy. (blockMesh might crash with a segfault if you're working with very small numbers instead of setting the scale appropriately!)
     - Export your model as Stl: File -> Export -> Stl
-        - Filename: `your-openfoam-scenario/constant/triSurface/<pick something>.stl`
+        - Filename: clear this field if you don't want a prefix to all batch-processed output files
         - Selection Only: check (is usually a good choice)
         - Scale: 1.0
         - Scene Unit: check!
         - Ascii: check
         - Apply Modifiers: check (e.g., if you used a boolean modifier to merge different objects and if you didn't apply the modifiers)
+        - Batch mode: Object (will create one .stl for every object as `<object name>.stl`
         - Foward: Y Forward (seems to work at least)
         - Up: Z Up (seems to work at least)
 - Open the .stl file with some text editor and edit the first and the last line to give the object ("patch") a recognizable name: `solid <your object name>\n…endsolid <your object name>`
