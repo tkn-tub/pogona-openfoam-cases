@@ -4,7 +4,7 @@ cd ${0%/*} || exit 1                        # Run from this directory
 
 runApplication blockMesh
 runApplication decomposePar
-runApplication mpirun -np 4 $(getApplication) -parallel
+runApplication mpirun -np 8 $(getApplication) -parallel
 runApplication reconstructPar
 
 
