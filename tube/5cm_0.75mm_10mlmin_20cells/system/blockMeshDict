@@ -18,7 +18,7 @@ scale   0.01;
 // All distances in cm
 
 var {
-    Length         15; // 1000
+    Length         5; // 1000
     Radius         0.075; // 25
     nRadius        #calc "-$Radius"; // -25
     Boxradius      #calc "0.4 * $Radius"; // 10
