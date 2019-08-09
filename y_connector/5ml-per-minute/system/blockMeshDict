@@ -19,12 +19,12 @@ scale   0.001; // all distances in millimeters
 var
 {
     // Boundaries of the box that should fully enclose the mesh in the .stl file:
-    blockMinX -3.5;
+    blockMinX -5.8;
     blockMinY -1;
-    blockMinZ -20.25;
-    blockMaxX 3.5;
+    blockMinZ -9.2;
+    blockMaxX 35.1;
     blockMaxY 1;
-    blockMaxZ 20.25;
+    blockMaxZ 40.1;
     // Cell density:
     cellsPerMilliMeter 15; // 10000 per m = 10 per mm
     cellsX #calc "floor(abs($blockMaxX - $blockMinX) * $cellsPerMilliMeter)";
