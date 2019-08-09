@@ -30,7 +30,7 @@ boundaryField
 		type        flowRateInletVelocity;	
 		volumetricFlowRate    0.0000001666;        // Volumetric/mass flow rate [m3/s or kg/s]
 		value       uniform (0 0 0); // placeholder
-		extrapolateProfile	true;
+		extrapolateProfile	false; // (caused a spike in flow velocity at the inlet when true)
     }
 
     outlet
