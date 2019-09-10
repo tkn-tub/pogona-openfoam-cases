@@ -6,6 +6,6 @@ runApplication blockMesh
 runApplication decomposePar
 runApplication mpirun -np 8 $(getApplication) -parallel
 runApplication reconstructPar
-
+runApplication postProcess -func writeCellCentres -latestTime
 
 #------------------------------------------------------------------------------
