@@ -27,8 +27,10 @@ boundaryField
 
     inlet
     {
-		type            fixedValue;
-        value           (0 0 0.047);
+        type               flowRateInletVelocity;
+        volumetricFlowRate 0.0000000833; // m^3/s or kg/s
+        value              (0 0 0); // placeholder
+        extrapolateProfile false;
     }
 
     outlet
