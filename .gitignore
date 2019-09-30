@@ -1,18 +1,26 @@
-C
-Cx
-Cy
-Cz
-dynamicCode
-!constant/transportProperties
-*.pickle
-
 # Created by https://www.gitignore.io/api/openfoam
 # Edit at https://www.gitignore.io/?templates=openfoam
 
 ### OpenFOAM ###
 # Timestep directories
+#0.*/*
 0.*
+#[1-9]*/*
 [1-9]*
+# Except if timestamp-like numbers are followed by other characters, like "15ml_…" for the y-connector meshes:
+
+# Ignore cache
+/cache/
+
+C
+Cx
+Cy
+Cz
+dynamicCode/
+!constant/transportProperties
+*.pickle
+# Present in y-connector; what's this actually for?:
+core
 
 # Fields that must get ignored
 */phi*
@@ -31,13 +39,13 @@ log.*
 *.pvsm
 
 # mesh data that is no dictionary
-constant/polyMesh/points*
-constant/polyMesh/faces*
-constant/polyMesh/owner*
-constant/polyMesh/neighbour*
-constant/polyMesh/boundary*
-constant/polyMesh/sets
-constant/polyMesh/*
+**/constant/polyMesh/points*
+**/constant/polyMesh/faces*
+**/constant/polyMesh/owner*
+**/constant/polyMesh/neighbour*
+**/constant/polyMesh/boundary
+**/constant/polyMesh/sets
+**/constant/polyMesh/*
 
 # Zones and levels
 *Level*

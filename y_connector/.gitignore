@@ -4,3 +4,7 @@
 *.eMesh
 **/dynamicCode/
 log.*
+combined.stl
+
+# In the y-connector, we have the initial configuration in 0.orig/ rather than 0/, so ignore 0/:
+**/0/
