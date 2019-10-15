@@ -7,6 +7,6 @@ runApplication decomposePar
 #runApplication $(getApplication)
 runApplication mpirun -np 4 $(getApplication) -parallel
 runApplication reconstructPar
-
+runApplication postProcess -func writeCellCentres -latestTime
 
 #------------------------------------------------------------------------------

@@ -10,5 +10,6 @@ runApplication -s sim decomposePar
 #runApplication -s sim $(getApplication)
 runApplication -s sim mpirun -np 8 $(getApplication) -parallel
 runApplication -s sim reconstructPar
+runApplication -s sim postProcess -func writeCellCentres -latestTime
 
 rm -rf ./processor*
