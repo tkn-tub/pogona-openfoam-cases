@@ -13,6 +13,7 @@ Many of the following steps are now automated in the `ConstructMesh` and `RunSim
     - Note: You may or may not wish to split your volume into different parts (e.g., tube, inlet, outlet; inlet and outlet would probably just be a single polygon or circle). In the coming steps, simply save these to different .stl files, then follow the step below to rename the stored stl `solid`, then merge all files into one using `cat tube.stl inlet.stl outlet.stl > merged.stl`.
     - In the Scene properties, optionally set the Unit Scale to 0.001 so you can comfortably work with millimeter accuracy. (blockMesh might crash with a segfault if you're working with very small numbers instead of setting the scale appropriately!)
     - Export your model as Stl: File -> Export -> Stl
+        - path: <path to your new openfoam case>/constant/triSurface
         - Filename: clear this field if you don't want a prefix to all batch-processed output files
         - Selection Only: check (is usually a good choice)
         - Scale: 1.0

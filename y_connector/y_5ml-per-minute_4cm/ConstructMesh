@@ -13,7 +13,7 @@ cd ${0%/*} || exit 1  # Run from this directory
 
 rm -f constant/triSurface/combined.stl
 # Rename objects inside STL files:
-../rename-stl-object.sh constant/triSurface/*.stl
+../../rename-stl-object.sh constant/triSurface/*.stl
 cat constant/triSurface/*.stl > constant/triSurface/combined.stl
 
 runApplication -s mesh blockMesh
