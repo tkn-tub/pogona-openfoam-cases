@@ -30,7 +30,9 @@ var
     // of a "resolution 11" tube defined purely with a blockMeshDict.
     // That tube has 33 cells across its axis-aligned diameter.
     // -> 22 per millimetre
-    cellsPerMilliMeter 22; // 10000 per m = 10 per mm
+    // …this resulted in 22 cells across the entire width for some reason,
+    // so let's try 33:
+    cellsPerMilliMeter 33; // 10000 per m = 10 per mm
     cellsX #calc "floor(abs($blockMaxX - $blockMinX) * $cellsPerMilliMeter)";
     cellsY #calc "floor(abs($blockMaxY - $blockMinY) * $cellsPerMilliMeter)";
     cellsZ #calc "floor(abs($blockMaxZ - $blockMinZ) * $cellsPerMilliMeter)";
