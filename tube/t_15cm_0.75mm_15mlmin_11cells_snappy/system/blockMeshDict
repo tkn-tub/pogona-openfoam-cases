@@ -19,12 +19,12 @@ scale   0.001; // all distances in millimeters
 var
 {
     // Boundaries of the box that should fully enclose the mesh in the .stl file:
-    blockMinX -0.75;
-    blockMinY -0.75;
-    blockMinZ -0;
-    blockMaxX 0.75;
-    blockMaxY 0.75;
-    blockMaxZ 150;
+    blockMinX -0.8;
+    blockMinY -0.8;
+    blockMinZ -0.1;
+    blockMaxX 0.8;
+    blockMaxY 0.8;
+    blockMaxZ 151;
     // Cell density:
     // In this case, we want to approximately match the resolution
     // of a "resolution 11" tube defined purely with a blockMeshDict.

@@ -30,7 +30,7 @@ boundaryField
     {
         type flowRateInletVelocity;
         volumetricFlowRate 0.0000000833 // Volumetric/mass flow rate [m3/s or kg/s]
-        value uniform (0 0 0); // placeholder
+            value uniform (0 0 0); // placeholder
         extrapolateProfile false;
     }
 

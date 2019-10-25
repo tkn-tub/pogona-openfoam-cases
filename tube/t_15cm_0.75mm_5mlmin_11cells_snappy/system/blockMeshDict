@@ -19,19 +19,19 @@ scale   0.001; // all distances in millimeters
 var
 {
     // Boundaries of the box that should fully enclose the mesh in the .stl file:
-    blockMinX -0.75;
-    blockMinY -0.75;
-    blockMinZ -0;
-    blockMaxX 0.75;
-    blockMaxY 0.75;
-    blockMaxZ 150;
+    blockMinX -0.8;  // -0.75
+    blockMinY -0.8;  // -0.75
+    blockMinZ -0.1;  // 0
+    blockMaxX 0.8;
+    blockMaxY 0.8;
+    blockMaxZ 151;  // 150
     // Cell density:
     // In this case, we want to approximately match the resolution
     // of a "resolution 11" tube defined purely with a blockMeshDict.
     // That tube has 33 cells across its axis-aligned diameter.
     // -> 22 per millimetre
     // …this resulted in 22 cells across the entire width for some reason,
-    // so let's try 33:
+    // so let's try 33.
     cellsPerMilliMeter 33; // 10000 per m = 10 per mm
     cellsX #calc "floor(abs($blockMaxX - $blockMinX) * $cellsPerMilliMeter)";
     cellsY #calc "floor(abs($blockMaxY - $blockMinY) * $cellsPerMilliMeter)";
