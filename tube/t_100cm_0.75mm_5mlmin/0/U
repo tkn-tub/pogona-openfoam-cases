@@ -14,7 +14,10 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 1 -1 0 0 0 0];
+// Parameter dimensions means physical dimensions with respect to the SI unit system
+// Number is exponent
+//      SI [  kg   m   s   K mol   A  cd]
+dimensions [   0   1  -1   0   0   0   0];  // meter per second
 
 internalField   uniform (0 0 0);
 
