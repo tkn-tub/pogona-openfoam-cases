@@ -1,0 +1,92 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1812                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+scale   0.001; // all distances in millimeters
+
+var
+{
+    // Boundaries of the box that should fully enclose the mesh in the .stl file:
+    blockMinX -26;
+    blockMinY -1;
+    blockMinZ -44;
+    blockMaxX 78.6;
+    blockMaxY 1;
+    blockMaxZ 50.1;
+    // Cell density:
+    cellsPerMilliMeter 15; // 10000 per m = 10 per mm
+    cellsX #calc "floor(abs($blockMaxX - $blockMinX) * $cellsPerMilliMeter)";
+    cellsY #calc "floor(abs($blockMaxY - $blockMinY) * $cellsPerMilliMeter)";
+    cellsZ #calc "floor(abs($blockMaxZ - $blockMinZ) * $cellsPerMilliMeter)";
+}
+
+// Adapted for our y-connector:
+vertices   // (x y z)
+(
+    ($:var.blockMinX $:var.blockMinY $:var.blockMinZ) // 0 0 0
+    ($:var.blockMaxX $:var.blockMinY $:var.blockMinZ) // 1 0 0
+    ($:var.blockMaxX $:var.blockMaxY $:var.blockMinZ) // 1 1 0
+    ($:var.blockMinX $:var.blockMaxY $:var.blockMinZ) // 0 1 0
+    ($:var.blockMinX $:var.blockMinY $:var.blockMaxZ) // 0 0 1
+    ($:var.blockMaxX $:var.blockMinY $:var.blockMaxZ) // 1 0 1
+    ($:var.blockMaxX $:var.blockMaxY $:var.blockMaxZ) // 1 1 1
+    ($:var.blockMinX $:var.blockMaxY $:var.blockMaxZ) // 0 1 1
+);
+
+// For snappyHexMesh we want an aspect ratio of approximately 1!
+// cellsX, cellsY, and cellsZ are calculated with this in mind.
+blocks
+(
+    hex (0 1 2 3 4 5 6 7) ($:var.cellsX $:var.cellsY $:var.cellsZ) simpleGrading (1 1 1)
+);
+
+edges
+(
+);
+
+// Giving each side of the block a name:
+patches
+(
+    patch maxY
+    (
+        (3 7 6 2)
+    )
+    patch minX
+    (
+        (0 4 7 3)
+    )
+    patch maxX
+    (
+        (2 6 5 1)
+    )
+    patch minY
+    (
+        (1 5 4 0)
+    )
+    patch minZ
+    (
+        (0 3 2 1)
+    )
+    patch maxZ
+    (
+        (4 5 6 7)
+    )
+);
+
+mergePatchPairs
+(
+);
+
+// ************************************************************************* //
