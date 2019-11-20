@@ -1,7 +1,7 @@
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  v1812                                 |
+|  \\    /   O peration     | Version:  v1906                                 |
 |   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
@@ -9,37 +9,23 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       volVectorField;
-    object      U;
+    class       dictionary;
+    object      decomposeParDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-// Dimensions means physical dimensions with respect to the SI unit system
-// Number is exponent
-//      SI [  kg   m   s   K mol   A  cd]
-dimensions [   0   1  -1   0   0   0   0];
+numberOfSubdomains 8;
 
-internalField   uniform (0 0 0);
+method          simple;
 
-boundaryField
+coeffs
 {
-    walls
-    {
-        type            noSlip;
-    }
-
-    inlet
-    {
-		type        flowRateInletVelocity;	
-		volumetricFlowRate    0.0000001666;        // Volumetric/mass flow rate [m3/s or kg/s]
-		value       uniform (0 0 0); // placeholder
-		extrapolateProfile	false;
-    }
-
-    outlet
-    {
-        type            zeroGradient;
-    }
+    n           (2 2 2); // needs to multiply to # processors
 }
+
+distributed     no;
+
+roots           ( );
+
 
 // ************************************************************************* //

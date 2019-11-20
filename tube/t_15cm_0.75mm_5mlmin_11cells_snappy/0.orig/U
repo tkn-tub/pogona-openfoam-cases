@@ -14,8 +14,10 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-// TODO: what do these values mean?
-dimensions [0 1 -1 0 0 0 0];
+// Dimensions means physical dimensions with respect to the SI unit system
+// Number is exponent
+//      SI [  kg   m   s   K mol   A  cd]
+dimensions [   0   1  -1   0   0   0   0];
 
 internalField uniform (0 0 0);
 
@@ -30,7 +32,7 @@ boundaryField
     {
         type flowRateInletVelocity;
         volumetricFlowRate 0.0000000833 // Volumetric/mass flow rate [m3/s or kg/s]
-        value uniform (0 0 0); // placeholder
+            value uniform (0 0 0); // placeholder
         extrapolateProfile false;
     }
 

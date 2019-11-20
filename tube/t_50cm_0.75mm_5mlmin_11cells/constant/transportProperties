@@ -9,37 +9,13 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       volVectorField;
-    object      U;
+    class       dictionary;
+    location    "constant";
+    object      transportProperties;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-// Dimensions means physical dimensions with respect to the SI unit system
-// Number is exponent
-//      SI [  kg   m   s   K mol   A  cd]
-dimensions [   0   1  -1   0   0   0   0];
+nu              1e-6;
 
-internalField   uniform (0 0 0);
-
-boundaryField
-{
-    walls
-    {
-        type            noSlip;
-    }
-
-    inlet
-    {
-		type        flowRateInletVelocity;	
-		volumetricFlowRate    0.0000001666;        // Volumetric/mass flow rate [m3/s or kg/s]
-		value       uniform (0 0 0); // placeholder
-		extrapolateProfile	false;
-    }
-
-    outlet
-    {
-        type            zeroGradient;
-    }
-}
 
 // ************************************************************************* //
