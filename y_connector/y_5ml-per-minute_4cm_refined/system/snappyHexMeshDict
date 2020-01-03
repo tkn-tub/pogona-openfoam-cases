@@ -127,7 +127,7 @@ castellatedMeshControls
         }
         {file "outletPatch.eMesh"; level 0;} // was 3
         {file "particleInletPatch.eMesh"; level 0;} // was 3
-        {file "yConnectorPatch.eMesh"; level 4;} // was 4
+        {file "yConnectorPatch.eMesh"; level 3;} // was 4
         // excluding combined_mesh.eMesh (won't even be generated with surfaceFeatureExtract)
     );
 
@@ -148,7 +148,7 @@ castellatedMeshControls
         backgroundInletPatch {level (0 0);}
         particleInletPatch {level (0 0);}
         outletPatch {level (0 0);}
-        yConnectorPatch {level (0 0);} // was (4 4)
+        yConnectorPatch {level (2 4);} // was (4 4)
 
         //yConnector
         //{
@@ -185,11 +185,11 @@ castellatedMeshControls
 
     refinementRegions
     {
-        refinementBox
-        {
-            mode inside;
-            levels ((1E15 4));
-        }
+    //     combinedMesh  // refinementBox
+    //     {
+    //         mode inside;
+    //         levels ((1E15 4));
+    //     }
     }
 
     // TODO: see YouTube tutorial 30:00: distance-based refinement, starts with `refinementRegions {volume {mode distance; …`, where `volume` is the name of the patch that includes all the other patches combined (as it was set up in that tutorial)
@@ -260,7 +260,7 @@ addLayersControls
 {
     // Are the thickness parameters below relative to the undistorted
     // size of the refined cell outside layer (true) or absolute sizes (false).
-    relativeSizes false; // was true
+    relativeSizes true; // was true
 
     // Per final patch (so not geometry!) the layer information
     layers
@@ -276,19 +276,19 @@ addLayersControls
     }
 
     // Expansion factor for layer mesh
-    expansionRatio 1.0;
+    expansionRatio 1.2;
 
     // Wanted thickness of final added cell layer. If multiple layers
     // is the thickness of the layer furthest away from the wall.
     // Relative to undistorted size of cell outside layer.
     // See relativeSizes parameter.
     // YouTube tutorial: 43:50
-    finalLayerThickness 0.0001;
+    finalLayerThickness 0.5;
 
     // Minimum thickness of cell layer. If for any reason layer
     // cannot be above minThickness do not add layer.
     // Relative to undistorted size of cell outside layer.
-    minThickness 0.00003;
+    minThickness 0.1;
 
     // If points get not extruded do nGrow layers of connected faces that are
     // also not grown. This helps convergence of the layer addition process
