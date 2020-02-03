@@ -1,4 +1,4 @@
-solid Exported from Blender-2.80 (sub 75)
+solid backgroundInletPatch
 facet normal 0.499968 -0.000428 0.866044
 outer loop
 vertex -0.025000 0.000750 -0.043301
@@ -433,4 +433,4 @@ vertex -0.024350 0.000000 -0.043676
 vertex -0.025000 0.000750 -0.043301
 endloop
 endfacet
-endsolid Exported from Blender-2.80 (sub 75)
+endsolid backgroundInletPatch
