@@ -1,3 +1,3 @@
-# MaMoKo OpenFOAM Cases
+# Pogona OpenFOAM Cases
 
 Do not commit simulation results here!
