@@ -1,20 +1,27 @@
 // included in snappyHexMeshDict
 
+/*
+ * As advised here, when having trouble with adding layers,
+ * it may be helpful to disable these quality controls
+ * to manually inspect an invalid mesh in paraFoam to isolate the problem:
+ * https://www.cfd-online.com/Forums/openfoam-meshing/106388-troubles-layer-adding-my-mesh.html#post379309
+ */
+
 // Documentation of the following variables: https://www.openfoam.com/documentation/guides/latest/doc/guide-meshing-snappyhexmesh-meshquality.html
 
 // "Maximum face non-orthogonality angle [deg]: the angle made by the vector between the two adjacent cell centres across the common face and the face normal"
-maxNonOrtho 65;
+maxNonOrtho 65;  // 65, disabled: 180
 
-maxBoundarySkewness 20;
+maxBoundarySkewness 20;  // 20, disabled: -1
 
 // "Maximum internal face skewness"
-maxInternalSkewness 4;
+maxInternalSkewness 4;  // 4, disabled: -1
 
 // "Maximum cell concavity [deg]"
-maxConcave 80;
+maxConcave 80;  // 80, disabled: 180
 
 // "Minimum cell pyramid volume [m³]"
-minVol 1e-13;
+minVol 1e-33;  // 1e-13, disabled: 1e-33
 
 // "Minimum tetrahedron quality"
 //  1e-15 (small positive) to enable tracking
