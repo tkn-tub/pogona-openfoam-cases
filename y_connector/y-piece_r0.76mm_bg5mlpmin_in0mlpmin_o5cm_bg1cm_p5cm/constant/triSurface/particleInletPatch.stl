@@ -1,4 +1,4 @@
-solid Exported from Blender-2.81 (sub 16)
+solid particleInletPatch
 facet normal 0.000000 1.000000 0.000000
 outer loop
 vertex 0.043175 -0.000713 0.025218
@@ -1105,4 +1105,4 @@ vertex 0.043511 0.000628 0.024636
 vertex 0.043375 0.000741 0.024872
 endloop
 endfacet
-endsolid Exported from Blender-2.81 (sub 16)
+endsolid particleInletPatch

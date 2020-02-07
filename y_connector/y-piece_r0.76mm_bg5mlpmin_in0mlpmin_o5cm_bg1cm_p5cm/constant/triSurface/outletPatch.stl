@@ -1,4 +1,4 @@
-solid Exported from Blender-2.81 (sub 16)
+solid outletPatch
 facet normal 0.000000 0.000000 -1.000000
 outer loop
 vertex 0.000220 -0.000724 0.050000
@@ -1105,4 +1105,4 @@ vertex -0.000682 0.000326 0.050000
 vertex -0.000252 0.000713 0.050000
 endloop
 endfacet
-endsolid Exported from Blender-2.81 (sub 16)
+endsolid outletPatch

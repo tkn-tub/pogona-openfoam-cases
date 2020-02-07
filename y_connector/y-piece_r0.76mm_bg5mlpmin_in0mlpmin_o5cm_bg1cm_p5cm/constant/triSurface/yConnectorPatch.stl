@@ -1,4 +1,4 @@
-solid Exported from Blender-2.81 (sub 16)
+solid yConnectorPatch
 facet normal 0.227033 0.963311 -0.143132
 outer loop
 vertex -0.004810 0.000724 -0.008770
@@ -20159,4 +20159,4 @@ vertex 0.000016 0.000753 -0.000121
 vertex -0.004936 0.000753 -0.008697
 endloop
 endfacet
-endsolid Exported from Blender-2.81 (sub 16)
+endsolid yConnectorPatch
