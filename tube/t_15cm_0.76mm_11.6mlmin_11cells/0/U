@@ -1,0 +1,45 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1812                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volVectorField;
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// Parameter dimensions means physical dimensions with respect to the SI unit system
+// Number is exponent
+//      SI [  kg   m   s   K mol   A  cd]
+dimensions [   0   1  -1   0   0   0   0];  // meter per second
+
+internalField   uniform (0 0 0);
+
+boundaryField
+{
+    walls
+    {
+        type            noSlip;
+    }
+
+    inlet
+    {
+		type        flowRateInletVelocity;	
+		volumetricFlowRate 1.94444444e-7; // Volumetric/mass flow rate [m3/s or kg/s]; 1 ml/min = 1e-6 / 60 m3/s
+		value       uniform (0 0 0); // placeholder
+		extrapolateProfile	false; // (caused a spike in flow velocity at the inlet when true)
+    }
+
+    outlet
+    {
+        type            zeroGradient;
+    }
+}
+
+// ************************************************************************* //
