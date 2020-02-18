@@ -1,0 +1,56 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1812                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volVectorField;
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// TODO: what do these values mean?
+dimensions [0 1 -1 0 0 0 0];
+
+internalField uniform (0 0 0);
+
+boundaryField
+{
+    outletPatch
+    {
+        type zeroGradient;
+    }
+
+    backgroundInletPatch
+    {
+        type flowRateInletVelocity;
+        volumetricFlowRate 0.0000000833; // Volumetric/mass flow rate [m3/s or kg/s]; 1 ml/min = 1e-6 / 60 m3/s
+        value uniform (0 0 0); // placeholder
+        extrapolateProfile false;
+    }
+
+    particleInletPatch
+    {
+        type flowRateInletVelocity;
+        volumetricFlowRate 1.11111111111111e-7; // Volumetric/mass flow rate [m3/s or kg/s]; 1 ml/min = 1e-6 / 60 m3/s
+        value uniform (0 0 0);
+        extrapolateProfile false;
+    }
+
+    yConnectorPatch
+    {
+        type fixedValue;
+        value uniform (0 0 0);
+    }
+
+    propagationTubePatch
+    {
+        type fixedValue;
+        value uniform (0 0 0);
+    }
+}
