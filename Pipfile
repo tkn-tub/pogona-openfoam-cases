@@ -1,0 +1,19 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+# Snakemake dependency the PyPi version of which
+# currently doesn't work with Python 3.8:
+# https://github.com/pytries/datrie/pull/76
+# Requires libdatrie-dev on Debian(-based) machines.
+# If you don't use Python 3.8 yet, just run `pip install datrie`.
+datrie = {editable = true,git = "https://github.com/ashwinvis/datrie.git",ref = "python3.8"}
+snakemake = "*"
+cookiecutter = "*"
+
+[requires]
+python_version = "3.8"
