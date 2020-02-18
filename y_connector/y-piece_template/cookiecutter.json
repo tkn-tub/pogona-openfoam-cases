@@ -1,0 +1,13 @@
+{
+    "dirname": "y-piece_r0.76mm_bg5mlpmin_in0mlpmin_o5cm_bg1cm_p5cm",
+    "radius_mm": 0.76,
+    "bg_flow_mlpmin": 5,
+    "inlet_flow_mlpmin": 0,
+    "outlet_len_cm": 5,
+    "bg_len_cm": 1,
+    "inlet_len_cm": 5,
+    "_copy_without_render": [
+        "*.stl"       
+    ],
+    "__ls_comment": "TODO: copy the correct STL files from some other directory!"
+}
