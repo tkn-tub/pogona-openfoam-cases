@@ -26,15 +26,15 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         0.8;
+endTime         {{cookiecutter.end_time_s}};
 
-deltaT          0.0002;
+deltaT          {{cookiecutter.delta_time_s}};
 
 writeControl    timeStep;
 
-writeInterval   500;
+writeInterval   {{cookiecutter.write_interval_s}};
 
-purgeWrite      10;
+purgeWrite      {{cookiecutter.purge_write if 'purge_write' in cookiecutter else 10}}; // keep only the latest N result time step folders
 
 writeFormat     ascii;
 

@@ -10,6 +10,10 @@ cases:
             outlet_len_cm: 5
             bg_len_cm: 1  # length of background flow inlet
             inlet_len_cm: 5  # particle inlet length
+            end_time_s: 0.8
+            delta_time_s: 0.00025
+            write_interval_s: 400
+
         'y-piece_r0.76mm_bg5mlpmin_in10mlpmin_o5cm_bg1cm_p5cm':
             radius_mm: 0.76
             bg_flow_mlpmin: 5
@@ -17,6 +21,10 @@ cases:
             outlet_len_cm: 5
             bg_len_cm: 1  # length of background flow inlet
             inlet_len_cm: 5  # particle inlet length
+            end_time_s: 0.8
+            delta_time_s: 0.0002
+            write_interval_s: 500
+
         ### intermediate flow speeds:
         'y-piece_r0.76mm_bg5mlpmin_in3.3mlpmin_o5cm_bg1cm_p5cm':
             radius_mm: 0.76
@@ -25,6 +33,10 @@ cases:
             outlet_len_cm: 5
             bg_len_cm: 1  # length of background flow inlet
             inlet_len_cm: 5  # particle inlet length
+            end_time_s: 0.8
+            delta_time_s: 0.0002
+            write_interval_s: 500
+
         'y-piece_r0.76mm_bg5mlpmin_in6.6mlpmin_o5cm_bg1cm_p5cm':
             radius_mm: 0.76
             bg_flow_mlpmin: 5
@@ -32,6 +44,10 @@ cases:
             outlet_len_cm: 5
             bg_len_cm: 1  # length of background flow inlet
             inlet_len_cm: 5  # particle inlet length
+            end_time_s: 0.8
+            delta_time_s: 0.0002
+            write_interval_s: 500
+
 
         ## radius = 0.75 mm
         ### off or on:
@@ -43,6 +59,10 @@ cases:
             outlet_len_cm: 4
             bg_len_cm: 1  # length of background flow inlet
             inlet_len_cm: 4  # particle inlet length
+            end_time_s: 0.8
+            delta_time_s: 0.00025
+            write_interval_s: 400
+
         'y-piece_r0.75mm_bg5mlpmin_in10mlpmin_o4cm_bg1cm_p4cm':
             radius_mm: 0.75
             bg_flow_mlpmin: 5
@@ -50,6 +70,10 @@ cases:
             outlet_len_cm: 4
             bg_len_cm: 1  # length of background flow inlet
             inlet_len_cm: 4  # particle inlet length
+            end_time_s: 0.8
+            delta_time_s: 0.0002
+            write_interval_s: 500
+
         #### refined variant, 4 cm outlet, 1 cm bg inlet, 4 cm particle inlet:
         'y-piece_r0.75mm_bg5mlpmin_in0mlpmin_o4cm_bg1cm_p4cm_refined':
             radius_mm: 0.75
@@ -59,6 +83,10 @@ cases:
             bg_len_cm: 1  # length of background flow inlet
             inlet_len_cm: 4  # particle inlet length
             variant: refined
+            end_time_s: 0.8
+            delta_time_s: 0.00025
+            write_interval_s: 400
+
         'y-piece_r0.75mm_bg5mlpmin_in10mlpmin_o4cm_bg1cm_p4cm_refined':
             radius_mm: 0.75
             bg_flow_mlpmin: 5
@@ -67,6 +95,10 @@ cases:
             bg_len_cm: 1  # length of background flow inlet
             inlet_len_cm: 4  # particle inlet length
             variant: refined
+            end_time_s: 0.8
+            delta_time_s: 0.0002
+            write_interval_s: 500
+
         #### 7 cm outlet, 1 cm bg inlet, 4 cm particle inlet:
         'y-piece_r0.75mm_bg5mlpmin_in0mlpmin_o7cm_bg1cm_p4cm':
             radius_mm: 0.75
@@ -75,6 +107,10 @@ cases:
             outlet_len_cm: 7
             bg_len_cm: 1  # length of background flow inlet
             inlet_len_cm: 4  # particle inlet length
+            end_time_s: 0.8
+            delta_time_s: 0.00025
+            write_interval_s: 400
+
         'y-piece_r0.75mm_bg5mlpmin_in10mlpmin_o7cm_bg1cm_p4cm':
             radius_mm: 0.75
             bg_flow_mlpmin: 5
@@ -82,6 +118,10 @@ cases:
             outlet_len_cm: 7
             bg_len_cm: 1  # length of background flow inlet
             inlet_len_cm: 4  # particle inlet length
+            end_time_s: 0.8
+            delta_time_s: 0.0002
+            write_interval_s: 500
+
         #### 5 cm outlet, 5 cm bg inlet, 9 cm particle inlet:
         'y-piece_r0.75mm_bg5mlpmin_in0mlpmin_o5cm_bg5cm_p9cm':
             radius_mm: 0.75
@@ -90,6 +130,10 @@ cases:
             outlet_len_cm: 5
             bg_len_cm: 5  # length of background flow inlet
             inlet_len_cm: 9  # particle inlet length
+            end_time_s: 0.8
+            delta_time_s: 0.00025
+            write_interval_s: 400
+
         'y-piece_r0.75mm_bg5mlpmin_in10mlpmin_o5cm_bg5cm_p9cm':
             radius_mm: 0.75
             bg_flow_mlpmin: 5
@@ -97,3 +141,7 @@ cases:
             outlet_len_cm: 5
             bg_len_cm: 5  # length of background flow inlet
             inlet_len_cm: 9  # particle inlet length
+            end_time_s: 0.8
+            delta_time_s: 0.0002
+            write_interval_s: 500
+

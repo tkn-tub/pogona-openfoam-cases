@@ -30,6 +30,9 @@ rule ypiece:
         bg_len_cm=ypiece_conf('bg_len_cm'),
         inlet_len_cm=ypiece_conf('inlet_len_cm'),
         variant=ypiece_conf('variant', ''),
+        end_time_s=ypiece_conf('end_time_s'),
+        delta_time_s=ypiece_conf('delta_time_s'),
+        write_interval_s=ypiece_conf('write_interval_s'),
     run:
         # TODO: check which files' contents change!!!
         cookiecutter(
@@ -44,6 +47,10 @@ rule ypiece:
                 outlet_len_cm=params.outlet_len_cm,
                 bg_len_cm=params.bg_len_cm,
                 inlet_len_cm=params.inlet_len_cm,
+                variant=params.variant,
+                end_time_s=params.end_time_s,
+                delta_time_s=params.delta_time_s,
+                write_interval_s=params.write_interval_s,
             ),
             output_dir="y_connector/cookiecutter-test",
         )
