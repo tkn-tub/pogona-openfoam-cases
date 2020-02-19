@@ -13,5 +13,5 @@
     "_copy_without_render": [
         "*.stl"       
     ],
-    "__ls_comment": "TODO: copy the correct STL files from some other directory!"
+    "__ls_comment": "Values will be overridden from Snakemake."
 }
