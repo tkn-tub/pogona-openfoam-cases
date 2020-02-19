@@ -34,7 +34,6 @@ rule ypiece:
         delta_time_s=ypiece_conf('delta_time_s'),
         write_interval_s=ypiece_conf('write_interval_s'),
     run:
-        # TODO: check which files' contents change!!!
         cookiecutter(
             template=input.template,
             no_input=True,
