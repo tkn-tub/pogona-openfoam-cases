@@ -37,9 +37,9 @@ boundaryField
     particleInletPatch
     {
         value uniform (0 0 0); // TODO: is this necessary for type flowRateInletVelocity?
-{% if cookiecutter.inlet_flow_mlpmin != 0 %}
+{% if cookiecutter.inlet_flow_mlpmin != '0' %}
         type flowRateInletVelocity;
-        volumetricFlowRate {{cookiecutter.inlet_flow_mlpmin * 1e-6 / 60}};
+        volumetricFlowRate {{(cookiecutter.inlet_flow_mlpmin|float) * 1e-6 / 60}};
         // ^ Volumetric/mass flow rate [m3/s or kg/s]; 1 ml/min = 1e-6 / 60 m3/s
         extrapolateProfile false;
 {% else %}
