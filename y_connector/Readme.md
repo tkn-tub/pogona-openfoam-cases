@@ -1,5 +1,13 @@
 # Y-Connector
 
+## Working with Templates
+
+A cookiecutter template is contained in the folder `template_y-piece`.
+Read the parent directory Readme for instructions on how to generate the corresponding OpenFOAM cases.
+
+Each case is configured in `../snakemake_config.yaml`.
+Mesh-specific files shared between several cases are copied from the `./meshes` folder via the post-generation hook in `./template_y-piece/hooks/post_gen_project.py`.
+
 ## Workflow with Blender and SnappyHexMesh
 
 [0] SnappyHexMesh [YouTube tutorial](https://youtu.be/ObsFQUiVi1U)
