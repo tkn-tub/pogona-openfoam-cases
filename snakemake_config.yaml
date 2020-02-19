@@ -1,0 +1,99 @@
+cases:
+    'y-piece':
+        # Y-Piece
+        ## radius = 0.76 mm
+        ### off or on:
+        'y-piece_r0.76mm_bg5mlpmin_in0mlpmin_o5cm_bg1cm_p5cm':
+            radius_mm: 0.76
+            bg_flow_mlpmin: 5
+            inlet_flow_mlpmin: 0
+            outlet_len_cm: 5
+            bg_len_cm: 1  # length of background flow inlet
+            inlet_len_cm: 5  # particle inlet length
+        'y-piece_r0.76mm_bg5mlpmin_in10mlpmin_o5cm_bg1cm_p5cm':
+            radius_mm: 0.76
+            bg_flow_mlpmin: 5
+            inlet_flow_mlpmin: 10
+            outlet_len_cm: 5
+            bg_len_cm: 1  # length of background flow inlet
+            inlet_len_cm: 5  # particle inlet length
+        ### intermediate flow speeds:
+        'y-piece_r0.76mm_bg5mlpmin_in3.3mlpmin_o5cm_bg1cm_p5cm':
+            radius_mm: 0.76
+            bg_flow_mlpmin: 5
+            inlet_flow_mlpmin: 3.333333333333333333
+            outlet_len_cm: 5
+            bg_len_cm: 1  # length of background flow inlet
+            inlet_len_cm: 5  # particle inlet length
+        'y-piece_r0.76mm_bg5mlpmin_in6.6mlpmin_o5cm_bg1cm_p5cm':
+            radius_mm: 0.76
+            bg_flow_mlpmin: 5
+            inlet_flow_mlpmin: 6.666666666666666666
+            outlet_len_cm: 5
+            bg_len_cm: 1  # length of background flow inlet
+            inlet_len_cm: 5  # particle inlet length
+
+        ## radius = 0.75 mm
+        ### off or on:
+        #### 4 cm outlet, 1 cm bg inlet, 4 cm particle inlet:
+        'y-piece_r0.75mm_bg5mlpmin_in0mlpmin_o4cm_bg1cm_p4cm':
+            radius_mm: 0.75
+            bg_flow_mlpmin: 5
+            inlet_flow_mlpmin: 0
+            outlet_len_cm: 4
+            bg_len_cm: 1  # length of background flow inlet
+            inlet_len_cm: 4  # particle inlet length
+        'y-piece_r0.75mm_bg5mlpmin_in10mlpmin_o4cm_bg1cm_p4cm':
+            radius_mm: 0.75
+            bg_flow_mlpmin: 5
+            inlet_flow_mlpmin: 10
+            outlet_len_cm: 4
+            bg_len_cm: 1  # length of background flow inlet
+            inlet_len_cm: 4  # particle inlet length
+        #### refined variant, 4 cm outlet, 1 cm bg inlet, 4 cm particle inlet:
+        'y-piece_r0.75mm_bg5mlpmin_in0mlpmin_o4cm_bg1cm_p4cm_refined':
+            radius_mm: 0.75
+            bg_flow_mlpmin: 5
+            inlet_flow_mlpmin: 0
+            outlet_len_cm: 4
+            bg_len_cm: 1  # length of background flow inlet
+            inlet_len_cm: 4  # particle inlet length
+            variant: refined
+        'y-piece_r0.75mm_bg5mlpmin_in10mlpmin_o4cm_bg1cm_p4cm_refined':
+            radius_mm: 0.75
+            bg_flow_mlpmin: 5
+            inlet_flow_mlpmin: 10
+            outlet_len_cm: 4
+            bg_len_cm: 1  # length of background flow inlet
+            inlet_len_cm: 4  # particle inlet length
+            variant: refined
+        #### 7 cm outlet, 1 cm bg inlet, 4 cm particle inlet:
+        'y-piece_r0.75mm_bg5mlpmin_in0mlpmin_o7cm_bg1cm_p4cm':
+            radius_mm: 0.75
+            bg_flow_mlpmin: 5
+            inlet_flow_mlpmin: 0
+            outlet_len_cm: 7
+            bg_len_cm: 1  # length of background flow inlet
+            inlet_len_cm: 4  # particle inlet length
+        'y-piece_r0.75mm_bg5mlpmin_in10mlpmin_o7cm_bg1cm_p4cm':
+            radius_mm: 0.75
+            bg_flow_mlpmin: 5
+            inlet_flow_mlpmin: 10
+            outlet_len_cm: 7
+            bg_len_cm: 1  # length of background flow inlet
+            inlet_len_cm: 4  # particle inlet length
+        #### 5 cm outlet, 5 cm bg inlet, 9 cm particle inlet:
+        'y-piece_r0.75mm_bg5mlpmin_in0mlpmin_o5cm_bg5cm_p9cm':
+            radius_mm: 0.75
+            bg_flow_mlpmin: 5
+            inlet_flow_mlpmin: 0
+            outlet_len_cm: 5
+            bg_len_cm: 5  # length of background flow inlet
+            inlet_len_cm: 9  # particle inlet length
+        'y-piece_r0.75mm_bg5mlpmin_in10mlpmin_o5cm_bg5cm_p9cm':
+            radius_mm: 0.75
+            bg_flow_mlpmin: 5
+            inlet_flow_mlpmin: 10
+            outlet_len_cm: 5
+            bg_len_cm: 5  # length of background flow inlet
+            inlet_len_cm: 9  # particle inlet length
