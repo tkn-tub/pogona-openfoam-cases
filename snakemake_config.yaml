@@ -37,7 +37,7 @@ cases:
             delta_time_s: 0.0002
             write_interval_s: 500
 
-        'y-piece_r0.76mm_bg5mlpmin_in6.6mlpmin_o5cm_bg1cm_p5cm':
+        'y-piece_r0.76mm_bg5mlpmin_in6.7mlpmin_o5cm_bg1cm_p5cm':
             radius_mm: 0.76
             bg_flow_mlpmin: 5
             inlet_flow_mlpmin: 6.666666666666666666
