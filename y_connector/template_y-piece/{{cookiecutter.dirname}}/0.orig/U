@@ -28,10 +28,15 @@ boundaryField
 
     backgroundInletPatch
     {
-        type flowRateInletVelocity;
-        volumetricFlowRate 0.0000000833; // Volumetric/mass flow rate [m3/s or kg/s]; 1 ml/min = 1e-6 / 60 m3/s
         value uniform (0 0 0); // placeholder
+{% if cookiecutter.bg_flow_mlpmin != '0' %}
+        type flowRateInletVelocity;
+        volumetricFlowRate {{(cookiecutter.bg_flow_mlpmin|float) * 1e-6 / 60}};
+        // ^ Volumetric/mass flow rate [m3/s or kg/s]; 1 ml/min = 1e-6 / 60 m3/s
         extrapolateProfile false;
+{% else %}
+        type fixedValue;
+{% endif %}
     }
 
     particleInletPatch

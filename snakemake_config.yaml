@@ -12,7 +12,7 @@ cases:
             inlet_len_cm: 5  # particle inlet length
             end_time_s: 0.8
             delta_time_s: 0.00025
-            write_interval_s: 400
+            write_interval_steps: 400
 
         'y-piece_r0.76mm_bg5mlpmin_in10mlpmin_o5cm_bg1cm_p5cm':
             radius_mm: 0.76
@@ -23,7 +23,7 @@ cases:
             inlet_len_cm: 5  # particle inlet length
             end_time_s: 0.8
             delta_time_s: 0.0002
-            write_interval_s: 500
+            write_interval_steps: 500
 
         ### intermediate flow speeds:
         'y-piece_r0.76mm_bg5mlpmin_in3.3mlpmin_o5cm_bg1cm_p5cm':
@@ -35,7 +35,7 @@ cases:
             inlet_len_cm: 5  # particle inlet length
             end_time_s: 0.8
             delta_time_s: 0.0002
-            write_interval_s: 500
+            write_interval_steps: 500
 
         'y-piece_r0.76mm_bg5mlpmin_in6.7mlpmin_o5cm_bg1cm_p5cm':
             radius_mm: 0.76
@@ -46,7 +46,7 @@ cases:
             inlet_len_cm: 5  # particle inlet length
             end_time_s: 0.8
             delta_time_s: 0.0002
-            write_interval_s: 500
+            write_interval_steps: 500
 
 
         ## radius = 0.75 mm
@@ -61,7 +61,7 @@ cases:
             inlet_len_cm: 4  # particle inlet length
             end_time_s: 0.8
             delta_time_s: 0.00025
-            write_interval_s: 400
+            write_interval_steps: 400
 
         'y-piece_r0.75mm_bg5mlpmin_in10mlpmin_o4cm_bg1cm_p4cm':
             radius_mm: 0.75
@@ -72,7 +72,7 @@ cases:
             inlet_len_cm: 4  # particle inlet length
             end_time_s: 0.8
             delta_time_s: 0.0002
-            write_interval_s: 500
+            write_interval_steps: 500
 
         #### refined variant, 4 cm outlet, 1 cm bg inlet, 4 cm particle inlet:
         'y-piece_r0.75mm_bg5mlpmin_in0mlpmin_o4cm_bg1cm_p4cm_refined':
@@ -85,7 +85,7 @@ cases:
             variant: refined
             end_time_s: 0.8
             delta_time_s: 0.00025
-            write_interval_s: 400
+            write_interval_steps: 400
 
         'y-piece_r0.75mm_bg5mlpmin_in10mlpmin_o4cm_bg1cm_p4cm_refined':
             radius_mm: 0.75
@@ -97,7 +97,7 @@ cases:
             variant: refined
             end_time_s: 0.8
             delta_time_s: 0.0002
-            write_interval_s: 500
+            write_interval_steps: 500
 
         #### 7 cm outlet, 1 cm bg inlet, 4 cm particle inlet:
         'y-piece_r0.75mm_bg5mlpmin_in0mlpmin_o7cm_bg1cm_p4cm':
@@ -109,7 +109,7 @@ cases:
             inlet_len_cm: 4  # particle inlet length
             end_time_s: 0.8
             delta_time_s: 0.00025
-            write_interval_s: 400
+            write_interval_steps: 400
 
         'y-piece_r0.75mm_bg5mlpmin_in10mlpmin_o7cm_bg1cm_p4cm':
             radius_mm: 0.75
@@ -120,7 +120,7 @@ cases:
             inlet_len_cm: 4  # particle inlet length
             end_time_s: 0.8
             delta_time_s: 0.0002
-            write_interval_s: 500
+            write_interval_steps: 500
 
         #### 5 cm outlet, 5 cm bg inlet, 9 cm particle inlet:
         'y-piece_r0.75mm_bg5mlpmin_in0mlpmin_o5cm_bg5cm_p9cm':
@@ -132,7 +132,7 @@ cases:
             inlet_len_cm: 9  # particle inlet length
             end_time_s: 0.8
             delta_time_s: 0.00025
-            write_interval_s: 400
+            write_interval_steps: 400
 
         'y-piece_r0.75mm_bg5mlpmin_in10mlpmin_o5cm_bg5cm_p9cm':
             radius_mm: 0.75
@@ -143,5 +143,77 @@ cases:
             inlet_len_cm: 9  # particle inlet length
             end_time_s: 0.8
             delta_time_s: 0.0002
-            write_interval_s: 500
+            write_interval_steps: 500
 
+    tube:
+        'tube_r0.76mm_l15cm_0mlpmin_11cells':
+            # TODO: test what happens for 0 flow
+            # also TODO: check if there's an elegant solution for Pogona so we don't have to load a 0-flow vector field…
+            radius_mm: 0.76
+            flow_mlpmin: 0
+            len_cm: 15
+            end_time_s: 0.001
+            delta_time_s: 0.0005
+            write_interval_steps: 1
+            cells: 11
+        'tube_r0.76mm_l15cm_3.3mlpmin_11cells':
+            # 1st/2 intermediate step from 0 mlpmin to 10 mlpmin
+            # TODO: test convergence
+            radius_mm: 0.76
+            flow_mlpmin: 3.33333333333333333333
+            len_cm: 15
+            end_time_s: 1.2
+            delta_time_s: 0.0005
+            write_interval_steps: 1
+            cells: 11
+        'tube_r0.76mm_l15cm_5mlpmin_11cells':
+            radius_mm: 0.76
+            flow_mlpmin: 5
+            len_cm: 15
+            end_time_s: 1.05
+            delta_time_s: 0.0005
+            write_interval_steps: 200
+            cells: 11
+        'tube_r0.76mm_l15cm_6.7mlpmin_11cells':
+            # 2nd/2 intermediate step from 0 mlpmin to 10 mlpmin
+            radius_mm: 0.76
+            flow_mlpmin: 6.66666666666666666667
+            len_cm: 15
+            end_time_s: 1.2
+            delta_time_s: 0.0005
+            write_interval_steps: 200
+            cells: 11
+        'tube_r0.76mm_l15cm_8.3mlpmin_11cells':
+            # 1st/2 intermediate step from 5 mlpmin to 15 mlpmin
+            radius_mm: 0.76
+            flow_mlpmin: 8.33333333333333333333
+            len_cm: 15
+            end_time_s: 1.2
+            delta_time_s: 0.0005
+            write_interval_steps: 200
+            cells: 11
+        'tube_r0.76mm_l15cm_10mlpmin_11cells':
+            radius_mm: 0.76
+            flow_mlpmin: 10
+            len_cm: 15
+            end_time_s: 1.2
+            delta_time_s: 0.0005
+            write_interval_steps: 200
+            cells: 11
+        'tube_r0.76mm_l15cm_11.7mlpmin_11cells':
+            # 2nd/2 intermediate step from 5 mlpmin to 15 mlpmin
+            radius_mm: 0.76
+            flow_mlpmin: 11.6666666666666666667
+            len_cm: 15
+            end_time_s: 1.2
+            delta_time_s: 0.0005
+            write_interval_steps: 200
+            cells: 11
+        'tube_r0.76mm_l15cm_15mlpmin_11cells':
+            radius_mm: 0.76
+            flow_mlpmin: 15
+            len_cm: 15
+            end_time_s: 1.2
+            delta_time_s: 0.0005
+            write_interval_steps: 200
+            cells: 11

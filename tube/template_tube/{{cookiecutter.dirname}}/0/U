@@ -9,46 +9,42 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       dictionary;
-    location    "system";
-    object      controlDict;
+    class       volVectorField;
+    object      U;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application     icoFoam;
+// Parameter dimensions means physical dimensions with respect to the SI unit system
+// Number is exponent
+//      SI [  kg   m   s   K mol   A  cd]
+dimensions [   0   1  -1   0   0   0   0];  // meter per second
 
-startFrom       latestTime;
+internalField   uniform (0 0 0);
 
-startTime       0;
-
-stopAt          endTime;
-
-endTime         1.2;
-
-deltaT          0.0005;
-
-writeControl    timeStep;
-
-writeInterval   200;
-
-purgeWrite      0;
-
-writeFormat     ascii;
-
-writePrecision  6;
-
-writeCompression off;
-
-timeFormat      general;
-
-timePrecision   6;
-
-runTimeModifiable true;
-
-functions
+boundaryField
+{
+    walls
     {
-    #includeFunc  residuals
+        type noSlip;
     }
 
+    inlet
+    {
+	value uniform (0 0 0); // placeholder
+{% if cookiecutter.flow_mlpmin != '0' %}
+	type flowRateInletVelocity;
+	volumetricFlowRate {{(cookiecutter.flow_mlpmin|float) * 1e-6 / 60}};
+	// ^ Volumetric/mass flow rate [m3/s or kg/s]; 1 ml/min = 1e-6 / 60 m3/s
+	extrapolateProfile false; // (caused a spike in flow velocity at the inlet when true)
+{% else %}
+	type fixedValue;
+{% endif %}
+    }
+
+    outlet
+    {
+	type zeroGradient;
+    }
+}
 
 // ************************************************************************* //

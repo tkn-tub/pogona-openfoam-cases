@@ -10,12 +10,46 @@ FoamFile
     version     2.0;
     format      ascii;
     class       dictionary;
-    location    "constant";
-    object      transportProperties;
+    location    "system";
+    object      controlDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-nu              1e-6;
+application     icoFoam;
+
+startFrom       latestTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         {{cookiecutter.end_time_s}};
+
+deltaT          {{cookiecutter.delta_time_s}};
+
+writeControl    timeStep;
+
+writeInterval   {{cookiecutter.write_interval_steps}};
+
+purgeWrite      {{cookiecutter.purge_write if 'purge_write' in cookiecutter else 10}}; // keep only the latest N result time step folders
+
+writeFormat     ascii;
+
+writePrecision  6;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable true;
+
+functions
+{
+    // Function objects
+    #includeFunc  residuals
+}
 
 
 // ************************************************************************* //

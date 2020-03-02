@@ -32,7 +32,7 @@ deltaT          {{cookiecutter.delta_time_s}};
 
 writeControl    timeStep;
 
-writeInterval   {{cookiecutter.write_interval_s}};
+writeInterval   {{cookiecutter.write_interval_steps}};
 
 purgeWrite      {{cookiecutter.purge_write if 'purge_write' in cookiecutter else 10}}; // keep only the latest N result time step folders
 

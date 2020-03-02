@@ -18,14 +18,14 @@ scale   0.01;
 // All distances in cm
 
 var {
-    Length         15; // 1000
-    Radius         0.076; // 25
+    Length         {{cookiecutter.len_cm}}; // 1000
+    Radius         {{(cookiecutter.radius_mm|float) * 1e-1}}; // 25
     nRadius        #calc "-$Radius"; // -25
     Boxradius      #calc "0.4 * $Radius"; // 10
     nBoxradius     #calc "-$Boxradius"; // -10
     Diagonal       #calc "sin(degToRad(45)) * $Radius"; // 17.68
     nDiagonal      #calc "-$Diagonal"; // -17.68
-    RadiusCells    11; // 10
+    RadiusCells    {{cookiecutter.cells}}; // 10
     LengthCells    #calc "floor($RadiusCells * 0.5 * ($Length / ($Radius * 2)))"; // 200
 }
 

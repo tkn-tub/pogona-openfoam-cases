@@ -1,0 +1,12 @@
+{
+    "dirname": "tube_r0.76mm_l15cm_10mlpmin_11cells",
+    "radius_mm": 0.76,
+    "flow_mlpmin": 10,
+    "len_cm": 15,
+    "end_time_s": 0.8,
+    "delta_time_s": 0.00025,
+    "write_interval_steps": 400,
+    "cells": 11,
+    "variant": "",
+    "__ls_comment": "Values will be overridden from Snakemake."
+}
