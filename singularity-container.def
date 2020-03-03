@@ -26,7 +26,7 @@ From: openfoamplus/of_v1912_centos73
     # Also see "Suggested build environment" here: https://github.com/pyenv/pyenv/wiki
 
     # Pyenv requirements:
-    yum install -y epel-release && \
+    yum install -y epel-release
     yum install -y \
         git \
         gcc \
@@ -50,8 +50,8 @@ From: openfoamplus/of_v1912_centos73
     # We need to build libdatrie ourselves as it isn't available in CentOS 7…
     # No helpful readme with build instructions, so copying from Arch:
     #  https://git.archlinux.org/svntogit/packages.git/tree/trunk/PKGBUILD?h=packages/libdatrie
-    git clone https://github.com/tlwg/libdatrie.git /opt/libdatrie && \
-        cd /opt/libdatrie && \
+    git clone https://github.com/tlwg/libdatrie.git /opt/libdatrie
+    cd /opt/libdatrie && \
         ./autogen.sh && \
         ./configure --prefix=/usr --disable-static && \
         make && \
@@ -60,9 +60,7 @@ From: openfoamplus/of_v1912_centos73
     # (https://stackoverflow.com/questions/1099981/why-cant-python-find-shared-objects-that-are-in-directories-in-sys-path/1100016#1100016):
     echo "export LD_LIBRARY_PATH=/usr/lib:$LD_LIBRARY_PATH" >> $SINGULARITY_ENVIRONMENT
 
-    yum install -y \
-        vim \
-        fish
+    yum install -y vim
 
     git clone https://github.com/pyenv/pyenv.git /opt/pyenv
     
