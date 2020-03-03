@@ -2,13 +2,17 @@ Bootstrap: docker
 From: openfoamplus/of_v1912_centos73
 
 %setup
-    # CLONED_DIR="$(mktemp -d)"
-    # git clone --depth 1 https://git.cs.upb.de/mamoko/mamoko-openfoam-cases.git "${CLONED_DIR}"
-    # mv "${CLONED_DIR}" "${SINGULARITY_ROOTFS}/mamoko-openfoam-cases"
-    # chmod -R 777 "${SINGULARITY_ROOTFS}/mamoko-openfoam-cases"
+    # From an old attempt for setting this repo up to run on the PC² cluster:
+        # CLONED_DIR="$(mktemp -d)"
+        # git clone --depth 1 https://git.cs.upb.de/mamoko/mamoko-openfoam-cases.git "${CLONED_DIR}"
+        # mv "${CLONED_DIR}" "${SINGULARITY_ROOTFS}/mamoko-openfoam-cases"
+        # chmod -R 777 "${SINGULARITY_ROOTFS}/mamoko-openfoam-cases"
+    
+    # Nothing to be done here.
 
 %files
-    # TODO: best practices: "Files should always be owned by a system account (UID less than 500)
+    # best practices: "Files should always be owned by a system account (UID less than 500)
+    # No files to copy.
 
 %environment
     # source /opt/OpenFOAM/setImage_v1906.sh
@@ -21,6 +25,7 @@ From: openfoamplus/of_v1912_centos73
     # Using this Github Gist: https://gist.github.com/jprjr/7667947
     # Also see "Suggested build environment" here: https://github.com/pyenv/pyenv/wiki
 
+    # Pyenv requirements:
     yum install -y epel-release && \
     yum install -y \
         git \
@@ -32,9 +37,33 @@ From: openfoamplus/of_v1912_centos73
         openssl-devel \
         tk-devel \
         xz-devel \
-        libffi-devel \
+        libffi-devel
+
+    # For Snakemake for Python 3.8 we currently need libdatrie-devel
+    #  because Snakemake depends on datrie, which currently doesn't officially support Python 3.8.
+    #  See also this long-open pull request: https://github.com/pytries/datrie/pull/76
+    #  Or this related Snakemake issue: https://github.com/snakemake/snakemake/issues/246
+    # libdatrie requirements:
+    yum install -y \
+        libtool \
+        autoconf-archive
+    # We need to build libdatrie ourselves as it isn't available in CentOS 7…
+    # No helpful readme with build instructions, so copying from Arch:
+    #  https://git.archlinux.org/svntogit/packages.git/tree/trunk/PKGBUILD?h=packages/libdatrie
+    git clone https://github.com/tlwg/libdatrie.git /opt/libdatrie && \
+        cd /opt/libdatrie && \
+        ./autogen.sh && \
+        ./configure --prefix=/usr --disable-static && \
+        make && \
+        make install
+    # Add /usr/lib to $LD_LIBRARY_PATH so libdatrie.so.1 can be found after installation
+    # (https://stackoverflow.com/questions/1099981/why-cant-python-find-shared-objects-that-are-in-directories-in-sys-path/1100016#1100016):
+    echo "export LD_LIBRARY_PATH=/usr/lib:$LD_LIBRARY_PATH" >> $SINGULARITY_ENVIRONMENT
+
+    yum install -y \
         vim \
-        fish && \
+        fish
+
     git clone https://github.com/pyenv/pyenv.git /opt/pyenv
     
     export PYENV_ROOT=/opt/pyenv
@@ -46,7 +75,7 @@ From: openfoamplus/of_v1912_centos73
         pyenv global 3.8.2
     pyenv rehash
     python3 --version && \
-        python3 -m ensurepip && \
+        python3 -m ensurepip --upgrade && \
         pip3 install pipenv numpy scipy pandas
 
     echo 'source /opt/OpenFOAM/setImage_v1912.sh' >> $SINGULARITY_ENVIRONMENT
@@ -58,7 +87,12 @@ From: openfoamplus/of_v1912_centos73
     if [ $# -ne 0 ]; then
         exec "$@"
     else
-        exec bash --norc
+        # Use bash to execute `pipenv shell`.
+        # We can't run `pipenv shell` directly as we want to specify /bin/bash as shell,
+        # and fish, for example, has a different syntax for doing so.
+        # `--fancy` is necessary for `pipenv shell` to forward `--norc` etc. to bash
+        #  (see https://github.com/pypa/pipenv/issues/2910#issuecomment-426484374):
+        exec bash --norc --noprofile
     fi
 
 %startscript
