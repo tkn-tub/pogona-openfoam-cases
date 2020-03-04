@@ -146,16 +146,6 @@ cases:
             write_interval_steps: 500
 
     tube:
-        'tube_r0.76mm_l15cm_0mlpmin_11cells':
-            # TODO: test what happens for 0 flow
-            # also TODO: check if there's an elegant solution for Pogona so we don't have to load a 0-flow vector field…
-            radius_mm: 0.76
-            flow_mlpmin: 0
-            len_cm: 15
-            end_time_s: 0.001
-            delta_time_s: 0.0005
-            write_interval_steps: 1
-            cells: 11
         'tube_r0.76mm_l15cm_3.3mlpmin_11cells':
             # 1st/2 intermediate step from 0 mlpmin to 10 mlpmin
             # TODO: test convergence
@@ -164,7 +154,7 @@ cases:
             len_cm: 15
             end_time_s: 1.2
             delta_time_s: 0.0005
-            write_interval_steps: 1
+            write_interval_steps: 200
             cells: 11
         'tube_r0.76mm_l15cm_5mlpmin_11cells':
             radius_mm: 0.76
