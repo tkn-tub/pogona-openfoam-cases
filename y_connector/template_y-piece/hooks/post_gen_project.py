@@ -39,12 +39,27 @@ if len(system_files) == 0:
     )
 
 # Copy STL files:
+dst = "constant/triSurface/"
+os.makedirs(dst)
 for stl_file in stl_files:
-    shutil.copy(stl_file, "constant/triSurface/")
+    try:
+        shutil.copy(stl_file, dst)
+    except IsADirectoryError as e:
+        raise IsADirectoryError(
+            f"Tried to copy \"{stl_file}\" to \"dst\". "
+            "The source file shouldn't be a directory. "
+            "If the complaint is that the destination "
+            "is a directory, the problem is more likely "
+            "to be that the folder doesn't exist. "
+            f"Original message: {e}"
+        )
+        # https://bugs.python.org/issue35216
 # Copy system files:
 # TODO: not having many copies of system files was the reason to have
 #  templating in the first place!
 #  On the other hand, the number of meshes should be much less than
 #  the number of simulation cases.
+dst = "system/"
+os.makedirs(dst)
 for system_file in system_files:
-    shutil.copy(system_file, "system/")
+    shutil.copy(system_file, dst)
