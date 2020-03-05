@@ -12,7 +12,15 @@ From: openfoamplus/of_v1912_centos73
 
 %files
     # best practices: "Files should always be owned by a system account (UID less than 500)
-    # No files to copy.
+
+    # Texlive installation profile:
+    # You can generate your own by getting the Texlive `install-tl` script
+    # as detailed below in %post, running it without arguments to get the
+    # interactive mode, make your changes (I selected the installation scheme
+    # "scheme-basic"), then choose the option to just save the profile to `texlive.profile`.
+    # IMPORTANT: Don't forget to edit the file to make the paths match the
+    # expectations in %post below, and to make them work with Singularity!
+    singularity_texlive.profile /tmp/texlive.profile
 
 %environment
     # source /opt/OpenFOAM/setImage_v1906.sh
@@ -61,6 +69,8 @@ From: openfoamplus/of_v1912_centos73
     echo "export LD_LIBRARY_PATH=/usr/lib:$LD_LIBRARY_PATH" >> $SINGULARITY_ENVIRONMENT
 
     yum install -y vim
+    # For Snakemake visualizations:
+    yum install -y graphviz-devel
 
     git clone https://github.com/pyenv/pyenv.git /opt/pyenv
     
@@ -77,6 +87,21 @@ From: openfoamplus/of_v1912_centos73
         pip3 install pipenv numpy scipy pandas
 
     echo 'source /opt/OpenFOAM/setImage_v1912.sh' >> $SINGULARITY_ENVIRONMENT
+
+    # Install Texlive
+    # Based on https://github.com/zimmerst/centos-texlive/blob/master/Dockerfile
+    yum -y install perl-Digest-MD5 wget
+    curl -o /tmp/install-tl-unx.tar.gz http://ftp.acc.umu.se/mirror/CTAN/systems/texlive/tlnet/install-tl-unx.tar.gz && \
+        cd /tmp/ && tar xzf install-tl-unx.tar.gz
+    cd /tmp/install-tl-* && \
+        ./install-tl -profile /tmp/texlive.profile -no-verify-downloads -persistent-downloads
+    echo 'PATH=/usr/local/texlive/bin/x86_64-linux:${PATH}' >> $SINGULARITY_ENVIRONMENT
+    echo 'MANPATH=/usr/local/texlive/texmf-dist/doc/man:${MANPATH}' >> $SINGULARITY_ENVIRONMENT
+    echo 'INFOPATH=/usr/local/texlive/texmf-dist/doc/info:${INFOPATH}' >> $SINGULARITY_ENVIRONMENT
+
+    # Cleanup
+    yum clean all
+    rm -rf /var/cache/yum
 
 %runscript
     # Executed if container is run as a binary.
