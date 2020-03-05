@@ -7,7 +7,7 @@ From: openfoamplus/of_v1912_centos73
         # git clone --depth 1 https://git.cs.upb.de/mamoko/mamoko-openfoam-cases.git "${CLONED_DIR}"
         # mv "${CLONED_DIR}" "${SINGULARITY_ROOTFS}/mamoko-openfoam-cases"
         # chmod -R 777 "${SINGULARITY_ROOTFS}/mamoko-openfoam-cases"
-    
+
     # Nothing to be done here.
 
 %files
@@ -28,6 +28,11 @@ From: openfoamplus/of_v1912_centos73
     PATH=$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH
 
 %post
+    # IMPORTANT: Avoid chaining commands with `&&` as this may cause %post to fail silently!
+    #  See https://github.com/sylabs/singularity/issues/1597
+    # Alternatively, surround them with parentheses:
+    #  https://github.com/singularityhub/singularity-cli/issues/103#issuecomment-496312915
+
     # We'll use Pyenv as Python releases in CentOS appear to lag behind.
     # Using this tutorial: https://www.tecmint.com/pyenv-install-and-manage-multiple-python-versions-in-linux/
     # Using this Github Gist: https://gist.github.com/jprjr/7667947
@@ -59,11 +64,11 @@ From: openfoamplus/of_v1912_centos73
     # No helpful readme with build instructions, so copying from Arch:
     #  https://git.archlinux.org/svntogit/packages.git/tree/trunk/PKGBUILD?h=packages/libdatrie
     git clone https://github.com/tlwg/libdatrie.git /opt/libdatrie
-    cd /opt/libdatrie && \
-        ./autogen.sh && \
-        ./configure --prefix=/usr --disable-static && \
-        make && \
-        make install
+    cd /opt/libdatrie
+    ./autogen.sh
+    ./configure --prefix=/usr --disable-static
+    make
+    make install
     # Add /usr/lib to $LD_LIBRARY_PATH so libdatrie.so.1 can be found after installation
     # (https://stackoverflow.com/questions/1099981/why-cant-python-find-shared-objects-that-are-in-directories-in-sys-path/1100016#1100016):
     echo "export LD_LIBRARY_PATH=/usr/lib:$LD_LIBRARY_PATH" >> $SINGULARITY_ENVIRONMENT
@@ -73,31 +78,39 @@ From: openfoamplus/of_v1912_centos73
     yum install -y graphviz-devel
 
     git clone https://github.com/pyenv/pyenv.git /opt/pyenv
-    
+
     export PYENV_ROOT=/opt/pyenv
     export PATH=$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH
     # Cflags for python compilation with pyenv (see their wiki):
     export CFLAGS="-O2"
 
-    pyenv install 3.8.2 && \
-        pyenv global 3.8.2
+    pyenv install 3.8.2
+    pyenv global 3.8.2
     pyenv rehash
-    python3 --version && \
-        python3 -m ensurepip --upgrade && \
-        pip3 install pipenv numpy scipy pandas
+    python3 --version
+    python3 -m ensurepip --upgrade
+    pip3 install pipenv numpy scipy pandas
 
     echo 'source /opt/OpenFOAM/setImage_v1912.sh' >> $SINGULARITY_ENVIRONMENT
 
     # Install Texlive
     # Based on https://github.com/zimmerst/centos-texlive/blob/master/Dockerfile
-    yum -y install perl-Digest-MD5 wget
-    curl -o /tmp/install-tl-unx.tar.gz http://ftp.acc.umu.se/mirror/CTAN/systems/texlive/tlnet/install-tl-unx.tar.gz && \
-        cd /tmp/ && tar xzf install-tl-unx.tar.gz
-    cd /tmp/install-tl-* && \
-        ./install-tl -profile /tmp/texlive.profile -no-verify-downloads -persistent-downloads
-    echo 'PATH=/usr/local/texlive/bin/x86_64-linux:${PATH}' >> $SINGULARITY_ENVIRONMENT
-    echo 'MANPATH=/usr/local/texlive/texmf-dist/doc/man:${MANPATH}' >> $SINGULARITY_ENVIRONMENT
-    echo 'INFOPATH=/usr/local/texlive/texmf-dist/doc/info:${INFOPATH}' >> $SINGULARITY_ENVIRONMENT
+    yum -y install perl-Digest-MD5 wget poppler-utils
+    curl -o /tmp/install-tl-unx.tar.gz http://ftp.acc.umu.se/mirror/CTAN/systems/texlive/tlnet/install-tl-unx.tar.gz
+    cd /tmp/
+    tar xzf install-tl-unx.tar.gz
+    rm install-tl-unx.tar.gz
+    bash -c "cd /tmp/install-tl-* && ./install-tl -profile /tmp/texlive.profile -no-verify-downloads -persistent-downloads"
+
+    echo 'export PATH=/usr/local/texlive/bin/x86_64-linux:$PATH' >> $SINGULARITY_ENVIRONMENT
+    echo 'export MANPATH=/usr/local/texlive/texmf-dist/doc/man:$MANPATH' >> $SINGULARITY_ENVIRONMENT
+    echo 'export INFOPATH=/usr/local/texlive/texmf-dist/doc/info:$INFOPATH' >> $SINGULARITY_ENVIRONMENT
+
+    export PATH=/usr/local/texlive/bin/x86_64-linux:$PATH
+    # Install individual additional packages (saves a lot of diskspace compared to using the next 'level' of `install-tl`):
+    tlmgr install csquotes
+    tlmgr install ucs  # for utf8x.def, expected by Matplotlib
+    tlmgr install pgf xcolor
 
     # Cleanup
     yum clean all
@@ -131,7 +144,7 @@ From: openfoamplus/of_v1912_centos73
 
 %help
     This container can be used for running OpenFOAM fluid simulations for the Pogona macroscopic molecular communication simulator.
-    
+
     Open a shell for example like so: `./cases.simg /bin/bash`.
 
     To run a simulation, call this container with "cd /mamoko-openfoam-cases/<case dir> && ./AllRun"
