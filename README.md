@@ -5,8 +5,11 @@ Do not commit simulation results here!
 ## Install OpenFOAM and Other Dependencies
 
   1. Install [Singularity](https://sylabs.io/docs/#singularity)
-  2. Run `./singularity_build.sh`
-  3. Open a shell inside the assembled image by running `./cases.simg`.
+  2. ~~Run `./singularity_build.sh`~~
+  3. ~~Open a shell inside the assembled image by running `./cases.simg`.~~
+
+There is now no more need to build the image yourself.
+You can find instructions on how to download and use a pre-built image on [Github](https://github.com/lumpiluk/pogona-container).
 
 ## Generate OpenFOAM Cases from Templates
 
