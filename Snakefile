@@ -93,5 +93,5 @@ rule tube:
                 write_interval_steps=params.write_interval_steps,
                 cells=params.cells,
             ),
-            output_dir="tube/cookiecutter-test",
+            output_dir="tube",
         )
