@@ -67,7 +67,7 @@ rule tube:
         cookiecutter_json="tube/template_tube/cookiecutter.json",
         template="tube/template_tube",
     output:
-        out_dir=directory("tube/cookiecutter-test/{dirname}"),
+        out_dir=directory("tube/{dirname}"),
     params:
         radius_mm=tube_conf('radius_mm'),
         flow_mlpmin=tube_conf('flow_mlpmin'),
