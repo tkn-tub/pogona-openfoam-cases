@@ -25,6 +25,28 @@ cases:
             delta_time_s: 0.0002
             write_interval_steps: 500
 
+        'y-piece_r0.76mm_bg10mlpmin_in0mlpmin_o5cm_bg1cm_p5cm':
+            radius_mm: 0.76
+            bg_flow_mlpmin: 10
+            inlet_flow_mlpmin: 0
+            outlet_len_cm: 5
+            bg_len_cm: 1  # length of background flow inlet
+            inlet_len_cm: 5  # particle inlet length
+            end_time_s: 0.8
+            delta_time_s: 0.0003
+            write_interval_steps: 500
+
+        'y-piece_r0.76mm_bg10mlpmin_in10mlpmin_o5cm_bg1cm_p5cm':
+            radius_mm: 0.76
+            bg_flow_mlpmin: 10
+            inlet_flow_mlpmin: 10
+            outlet_len_cm: 5
+            bg_len_cm: 1  # length of background flow inlet
+            inlet_len_cm: 5  # particle inlet length
+            end_time_s: 0.8
+            delta_time_s: 0.0003
+            write_interval_steps: 500
+
         ### intermediate flow speeds:
         'y-piece_r0.76mm_bg5mlpmin_in3.3mlpmin_o5cm_bg1cm_p5cm':
             radius_mm: 0.76
@@ -202,6 +224,14 @@ cases:
         'tube_r0.76mm_l15cm_15mlpmin_11cells':
             radius_mm: 0.76
             flow_mlpmin: 15
+            len_cm: 15
+            end_time_s: 1.2
+            delta_time_s: 0.0005
+            write_interval_steps: 200
+            cells: 11
+        'tube_r0.76mm_l15cm_20mlpmin_11cells':
+            radius_mm: 0.76
+            flow_mlpmin: 20
             len_cm: 15
             end_time_s: 1.2
             delta_time_s: 0.0005
