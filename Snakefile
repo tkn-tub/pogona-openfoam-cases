@@ -20,7 +20,7 @@ def tube_conf(key: str, default=None):
 rule all:
     input:
         expand("y_connector/{dirname}", dirname=ypiece_case_names),
-        expand("tube/cookiecutter-test/{dirname}", dirname=tube_case_names),
+        expand("tube/{dirname}", dirname=tube_case_names),
 
 
 rule ypiece:
