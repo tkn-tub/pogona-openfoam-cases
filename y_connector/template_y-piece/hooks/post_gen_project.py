@@ -40,7 +40,7 @@ if len(system_files) == 0:
 
 # Copy STL files:
 dst = "constant/triSurface/"
-os.makedirs(dst)
+os.makedirs(dst, exist_ok=True)
 for stl_file in stl_files:
     try:
         shutil.copy(stl_file, dst)
@@ -60,6 +60,6 @@ for stl_file in stl_files:
 #  On the other hand, the number of meshes should be much less than
 #  the number of simulation cases.
 dst = "system/"
-os.makedirs(dst)
+os.makedirs(dst, exist_ok=True)
 for system_file in system_files:
     shutil.copy(system_file, dst)
