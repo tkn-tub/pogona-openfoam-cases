@@ -2,7 +2,8 @@ cases:
     'y-piece':
         # Y-Piece
         ## radius = 0.76 mm
-        ### off or on:
+
+        ### bg rate 5 mlpmin
         'y-piece_r0.76mm_bg5mlpmin_in0mlpmin_o5cm_bg1cm_p5cm':
             radius_mm: 0.76
             bg_flow_mlpmin: 5
@@ -13,6 +14,17 @@ cases:
             end_time_s: 0.8
             delta_time_s: 0.00025
             write_interval_steps: 400
+
+        'y-piece_r0.76mm_bg5mlpmin_in5mlpmin_o5cm_bg1cm_p5cm':
+            radius_mm: 0.76
+            bg_flow_mlpmin: 5
+            inlet_flow_mlpmin: 5
+            outlet_len_cm: 5
+            bg_len_cm: 1  # length of background flow inlet
+            inlet_len_cm: 5  # particle inlet length
+            end_time_s: 0.8
+            delta_time_s: 0.0003
+            write_interval_steps: 500
 
         'y-piece_r0.76mm_bg5mlpmin_in10mlpmin_o5cm_bg1cm_p5cm':
             radius_mm: 0.76
@@ -25,10 +37,33 @@ cases:
             delta_time_s: 0.0002
             write_interval_steps: 500
 
+        'y-piece_r0.76mm_bg5mlpmin_in16.6mlpmin_o5cm_bg1cm_p5cm':
+            radius_mm: 0.76
+            bg_flow_mlpmin: 5
+            inlet_flow_mlpmin: 16.6
+            outlet_len_cm: 5
+            bg_len_cm: 1  # length of background flow inlet
+            inlet_len_cm: 5  # particle inlet length
+            end_time_s: 0.8
+            delta_time_s: 0.0003
+            write_interval_steps: 500
+
+        ### bg rate 10 mlpmin
         'y-piece_r0.76mm_bg10mlpmin_in0mlpmin_o5cm_bg1cm_p5cm':
             radius_mm: 0.76
             bg_flow_mlpmin: 10
             inlet_flow_mlpmin: 0
+            outlet_len_cm: 5
+            bg_len_cm: 1  # length of background flow inlet
+            inlet_len_cm: 5  # particle inlet length
+            end_time_s: 0.8
+            delta_time_s: 0.0003
+            write_interval_steps: 500
+
+        'y-piece_r0.76mm_bg10mlpmin_in5mlpmin_o5cm_bg1cm_p5cm':
+            radius_mm: 0.76
+            bg_flow_mlpmin: 10
+            inlet_flow_mlpmin: 5
             outlet_len_cm: 5
             bg_len_cm: 1  # length of background flow inlet
             inlet_len_cm: 5  # particle inlet length
@@ -47,7 +82,63 @@ cases:
             delta_time_s: 0.0003
             write_interval_steps: 500
 
-        ### intermediate flow speeds:
+        'y-piece_r0.76mm_bg10mlpmin_in16.6mlpmin_o5cm_bg1cm_p5cm':
+            radius_mm: 0.76
+            bg_flow_mlpmin: 10
+            inlet_flow_mlpmin: 16.6
+            outlet_len_cm: 5
+            bg_len_cm: 1  # length of background flow inlet
+            inlet_len_cm: 5  # particle inlet length
+            end_time_s: 0.8
+            delta_time_s: 0.0003
+            write_interval_steps: 500
+
+        ### bg rate 20 mlpmin
+        'y-piece_r0.76mm_bg20mlpmin_in0mlpmin_o5cm_bg1cm_p5cm':
+            radius_mm: 0.76
+            bg_flow_mlpmin: 20
+            inlet_flow_mlpmin: 0
+            outlet_len_cm: 5
+            bg_len_cm: 1  # length of background flow inlet
+            inlet_len_cm: 5  # particle inlet length
+            end_time_s: 0.8
+            delta_time_s: 0.0003
+            write_interval_steps: 500
+
+        'y-piece_r0.76mm_bg20mlpmin_in5mlpmin_o5cm_bg1cm_p5cm':
+            radius_mm: 0.76
+            bg_flow_mlpmin: 20
+            inlet_flow_mlpmin: 5
+            outlet_len_cm: 5
+            bg_len_cm: 1  # length of background flow inlet
+            inlet_len_cm: 5  # particle inlet length
+            end_time_s: 0.8
+            delta_time_s: 0.0003
+            write_interval_steps: 500
+
+        'y-piece_r0.76mm_bg20mlpmin_in10mlpmin_o5cm_bg1cm_p5cm':
+            radius_mm: 0.76
+            bg_flow_mlpmin: 20
+            inlet_flow_mlpmin: 10
+            outlet_len_cm: 5
+            bg_len_cm: 1  # length of background flow inlet
+            inlet_len_cm: 5  # particle inlet length
+            end_time_s: 0.8
+            delta_time_s: 0.0003
+            write_interval_steps: 500
+
+        'y-piece_r0.76mm_bg20mlpmin_in16.6mlpmin_o5cm_bg1cm_p5cm':
+            radius_mm: 0.76
+            bg_flow_mlpmin: 20
+            inlet_flow_mlpmin: 16.6
+            outlet_len_cm: 5
+            bg_len_cm: 1  # length of background flow inlet
+            inlet_len_cm: 5  # particle inlet length
+            end_time_s: 0.8
+            delta_time_s: 0.0003
+            write_interval_steps: 500
+
+        ### intermediate flow speeds for pump ramp-down tests:
         'y-piece_r0.76mm_bg5mlpmin_in3.3mlpmin_o5cm_bg1cm_p5cm':
             radius_mm: 0.76
             bg_flow_mlpmin: 5
@@ -229,9 +320,57 @@ cases:
             delta_time_s: 0.0005
             write_interval_steps: 200
             cells: 11
+        'tube_r0.76mm_l15cm_16.6mlpmin_11cells':
+            radius_mm: 0.76
+            flow_mlpmin: 16.6
+            len_cm: 15
+            end_time_s: 1.2
+            delta_time_s: 0.0005
+            write_interval_steps: 200
+            cells: 11
         'tube_r0.76mm_l15cm_20mlpmin_11cells':
             radius_mm: 0.76
             flow_mlpmin: 20
+            len_cm: 15
+            end_time_s: 1.2
+            delta_time_s: 0.0005
+            write_interval_steps: 200
+            cells: 11
+        'tube_r0.76mm_l15cm_21.6mlpmin_11cells':
+            radius_mm: 0.76
+            flow_mlpmin: 21.6
+            len_cm: 15
+            end_time_s: 1.2
+            delta_time_s: 0.0005
+            write_interval_steps: 200
+            cells: 11
+        'tube_r0.76mm_l15cm_25mlpmin_11cells':
+            radius_mm: 0.76
+            flow_mlpmin: 25
+            len_cm: 15
+            end_time_s: 1.2
+            delta_time_s: 0.0005
+            write_interval_steps: 200
+            cells: 11
+        'tube_r0.76mm_l15cm_26.6mlpmin_11cells':
+            radius_mm: 0.76
+            flow_mlpmin: 26.6
+            len_cm: 15
+            end_time_s: 1.2
+            delta_time_s: 0.0005
+            write_interval_steps: 200
+            cells: 11
+        'tube_r0.76mm_l15cm_30mlpmin_11cells':
+            radius_mm: 0.76
+            flow_mlpmin: 30
+            len_cm: 15
+            end_time_s: 1.2
+            delta_time_s: 0.0005
+            write_interval_steps: 200
+            cells: 11
+        'tube_r0.76mm_l15cm_36mlpmin_11cells':
+            radius_mm: 0.76
+            flow_mlpmin: 36
             len_cm: 15
             end_time_s: 1.2
             delta_time_s: 0.0005
