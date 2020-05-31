@@ -376,3 +376,11 @@ cases:
             delta_time_s: 0.0005
             write_interval_steps: 200
             cells: 11
+        'tube_r0.76mm_l15cm_36.6mlpmin_11cells':
+            radius_mm: 0.76
+            flow_mlpmin: 36.6
+            len_cm: 15
+            end_time_s: 1.2
+            delta_time_s: 0.0005
+            write_interval_steps: 200
+            cells: 11
