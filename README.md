@@ -4,12 +4,8 @@ Do not commit simulation results here!
 
 ## Install OpenFOAM and Other Dependencies
 
-  1. Install [Singularity](https://sylabs.io/docs/#singularity)
-  2. ~~Run `./singularity_build.sh`~~
-  3. ~~Open a shell inside the assembled image by running `./cases.simg`.~~
-
-There is now no more need to build the image yourself.
-You can find instructions on how to download and use a pre-built image on [Github](https://github.com/lumpiluk/pogona-container).
+You can find instructions on how to download and use a pre-built [Singularity](https://sylabs.io/docs/#singularity) image on [Github](https://github.com/lumpiluk/pogona-container).
+Unlike the OpenFOAM base image (at the time of writing), this image has the advantage that it already includes a compatible Python version and Pipenv.
 
 ## Generate OpenFOAM Cases from Templates
 
@@ -25,3 +21,4 @@ pipenv shell
 snakemake
 ```
 
+Afterwards, you can run each desired simulation by `cd`-ing into the respective subfolder and running `./Allrun`.
