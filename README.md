@@ -1,6 +1,6 @@
 # Pogona OpenFOAM Cases
 
-Do not commit simulation results here!
+OpenFOAM simulation cases for the [Pogona](https://www2.tkn.tu-berlin.de/software/pogona/) simulator for macroscopic molecular communication.
 
 ## Install OpenFOAM and Other Dependencies
 
