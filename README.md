@@ -4,8 +4,7 @@ OpenFOAM simulation cases for the [Pogona](https://www2.tkn.tu-berlin.de/softwar
 
 ## Install OpenFOAM and Other Dependencies
 
-You can find instructions on how to download and use a pre-built [Singularity](https://sylabs.io/docs/#singularity) image on [Github](https://github.com/lumpiluk/pogona-container).
-Unlike the OpenFOAM base image (at the time of writing), this image has the advantage that it already includes a compatible Python version and Pipenv.
+You can find instructions on how to use an [Apptainer](https://apptainer.org/) container image in our [pogona-container](https://github.com/lumpiluk/pogona-container) repository.
 
 ## Generate OpenFOAM Cases from Templates
 
